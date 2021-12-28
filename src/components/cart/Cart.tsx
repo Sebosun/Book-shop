@@ -1,10 +1,12 @@
 import { ReactElement, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../store/app/hooks";
 import CartItem from "./CartItem";
 
 export default function Cart(): ReactElement {
   const [total, setTotal] = useState(0);
   const { cart } = useAppSelector((state) => state.cart);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const calculateTotal = () => {
@@ -14,6 +16,10 @@ export default function Cart(): ReactElement {
     };
     setTotal(calculateTotal());
   }, [cart]);
+
+  const handleCheckout = () => {
+    navigate("/checkout");
+  };
 
   //i.e. if carts not empty
   if (cart.length > 0) {
@@ -31,7 +37,9 @@ export default function Cart(): ReactElement {
           );
         })}
         <h1>{total / 100} zl.</h1>
-        <button className="mx-auto btn-primary">Kup Teraz!</button>
+        <button onClick={handleCheckout} className="mx-auto btn-primary">
+          Kup Teraz!
+        </button>
       </div>
     );
   } else {
