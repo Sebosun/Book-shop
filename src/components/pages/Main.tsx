@@ -29,9 +29,9 @@ export default function Main(): ReactElement | null {
   return (
     <>
       {books && (
-        <div className="grid gap-6 mx-14 my-6 grid-row-1 xl:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-6 my-6 grid-row-1 lg:grid-cols-2 mx-2 md:mx-14 2xl:grid-cols-3">
           {books.map((book) => {
-            return <Bookshelf book={book} />;
+            return <Bookshelf key={book.id} book={book} />;
           })}
         </div>
       )}
