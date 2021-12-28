@@ -1,4 +1,5 @@
 import "./App.css";
+import Header from "./components/header/Header";
 
 function App() {
   const fetchBooks = async () => {
@@ -9,7 +10,12 @@ function App() {
     console.log(JSON.parse(new TextDecoder().decode(readReader?.value)));
   };
 
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <Header />
+      <p></p>
+    </div>
+  );
 }
 
 export default App;
