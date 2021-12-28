@@ -12,7 +12,7 @@ export default function Header(): ReactElement | null {
           className="flex justify-center text-2xl items-center btn-primary"
         >
           <AiOutlineShoppingCart />
-          <p>Koszyk</p>
+          <p>Koszyk ({0})</p>
         </Link>
       </nav>
     </div>

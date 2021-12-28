@@ -30,15 +30,8 @@ export default function Main(): ReactElement | null {
     <>
       {books && (
         <div className="grid gap-6 mx-14 my-6 grid-row-1 xl:grid-cols-2 xl:grid-cols-3">
-          {books.map((item) => {
-            return (
-              <Bookshelf
-                cover_url={item.cover_url}
-                title={item.title}
-                author={item.author}
-                pageNumber={item.pages}
-              />
-            );
+          {books.map((book) => {
+            return <Bookshelf book={book} />;
           })}
         </div>
       )}

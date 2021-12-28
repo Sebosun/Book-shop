@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { bookTypes } from "../../components/pages/Main";
 
 export interface cartState {
-  cart: [];
+  cart: any[];
 }
 
 const initialState: cartState = {
@@ -12,8 +13,9 @@ const cartSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
-    addToCart(state, action) {
-      state.cart.push = action.payload;
+    addToCart(state, action: PayloadAction<bookTypes>) {
+      const newArr = [...state.cart, action.payload];
+      state.cart = newArr;
     },
   },
 });
