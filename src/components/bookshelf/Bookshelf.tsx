@@ -27,9 +27,7 @@ export default function Bookshelf({
           <span className="text-gray-900">{pageNumber}</span> stron
         </div>
 
-        <button className="p-4 justify-self-end w-48 text-lg text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl border-2 border-sky-100 shadow-md">
-          Dodaj do koszyka
-        </button>
+        <button className="btn-primary">Dodaj do koszyka</button>
       </div>
     </div>
   );
