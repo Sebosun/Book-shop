@@ -1,4 +1,3 @@
-import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { customerData } from "./Checkout";
@@ -12,20 +11,24 @@ export default function CheckoutForm({
 }: checkoutFormTypes) {
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      town: "",
-      postcode: "",
+      first_name: "",
+      last_name: "",
+      city: "",
+      zip_code: "",
     },
     validationSchema: Yup.object({
-      firstName: Yup.string()
-        .max(15, "Must be 15 characters or less")
+      first_name: Yup.string()
+        .min(4, "Imie musi byc dluzsze niz 4 litery")
+        .max(15, "Imie nie moze byc dluzsze niz 15 znakow")
         .required("Wymagane"),
-      lastName: Yup.string()
-        .max(20, "Must be 20 characters or less")
+      last_name: Yup.string()
+        .min(5, "nazwisko musi miec przynajmniej 5 znakow")
+        .max(25, "Nazwisko nie moze byc dluzsze niz 25 znakow")
         .required("Wymagane"),
-      town: Yup.string().required("Wymagane"),
-      postcode: Yup.string()
+      city: Yup.string()
+        .required("Wymagane")
+        .min(3, "Nazwa miejscowosci musi miec przynajmniej 3 litery"),
+      zip_code: Yup.string()
         .matches(/^\d{2}-\d{3}$|^\d{5}$/, "Invalid post code")
         .min(5, "Must be at least 5 digits")
         .max(6, "Must be at most 6 digits"),
@@ -37,58 +40,56 @@ export default function CheckoutForm({
 
   return (
     <form className="flex flex-col" onSubmit={formik.handleSubmit}>
-      <label htmlFor="firstName">Imie</label>
+      <label htmlFor="first_name">Imie</label>
       <input
-        id="firstName"
-        name="firstName"
+        id="first_name"
+        name="first_name"
         type="text"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.firstName}
+        value={formik.values.first_name}
       />
-      {formik.touched.firstName && formik.errors.firstName ? (
-        <div>{formik.errors.firstName}</div>
+      {formik.touched.first_name && formik.errors.first_name ? (
+        <div>{formik.errors.first_name}</div>
       ) : null}
 
-      <label htmlFor="lastName">Nazwisko</label>
+      <label htmlFor="last_name">Nazwisko</label>
       <input
-        id="lastName"
-        name="lastName"
+        id="last_name"
+        name="last_name"
         type="text"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.lastName}
+        value={formik.values.last_name}
       />
-      {formik.touched.lastName && formik.errors.lastName ? (
-        <div>{formik.errors.lastName}</div>
+      {formik.touched.last_name && formik.errors.last_name ? (
+        <div>{formik.errors.last_name}</div>
       ) : null}
 
-      <label htmlFor="town">Miasto</label>
+      <label htmlFor="city">Miasto</label>
       <input
-        id="town"
-        name="town"
+        id="city"
+        name="city"
         type="text"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.town}
+        value={formik.values.city}
       />
-      {formik.touched.town && formik.errors.town ? (
-        <div>{formik.errors.town}</div>
+      {formik.touched.city && formik.errors.city ? (
+        <div>{formik.errors.city}</div>
       ) : null}
 
-      <label htmlFor="postcode">Kod pocztowy</label>
+      <label htmlFor="zip_code">Kod pocztowy</label>
       <input
-        id="postcode"
-        name="postcode"
+        id="zip_code"
+        name="zip_code"
         type="text"
-        inputMode="numeric"
-        pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.postcode}
+        value={formik.values.zip_code}
       />
-      {formik.touched.postcode && formik.errors.postcode ? (
-        <div>{formik.errors.postcode}</div>
+      {formik.touched.zip_code && formik.errors.zip_code ? (
+        <div>{formik.errors.zip_code}</div>
       ) : null}
 
       <button className="btn-primary uppercase self-center my-4" type="submit">
