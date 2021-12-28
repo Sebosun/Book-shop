@@ -1,8 +1,15 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { customerData } from "./Checkout";
 
-export default function CheckoutForm() {
+interface checkoutFormTypes {
+  handleOrderConfirm: (data: customerData) => void;
+}
+
+export default function CheckoutForm({
+  handleOrderConfirm,
+}: checkoutFormTypes) {
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -13,15 +20,18 @@ export default function CheckoutForm() {
     validationSchema: Yup.object({
       firstName: Yup.string()
         .max(15, "Must be 15 characters or less")
-        .required("Required"),
+        .required("Wymagane"),
       lastName: Yup.string()
         .max(20, "Must be 20 characters or less")
-        .required("Required"),
-      town: Yup.string().required("Required"),
-      postcode: Yup.string().required("Required"),
+        .required("Wymagane"),
+      town: Yup.string().required("Wymagane"),
+      postcode: Yup.string()
+        .matches(/^\d{2}-\d{3}$|^\d{5}$/, "Invalid post code")
+        .min(5, "Must be at least 5 digits")
+        .max(6, "Must be at most 6 digits"),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      handleOrderConfirm(values);
     },
   });
 
@@ -71,6 +81,8 @@ export default function CheckoutForm() {
         id="postcode"
         name="postcode"
         type="text"
+        inputMode="numeric"
+        pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.postcode}
@@ -79,8 +91,8 @@ export default function CheckoutForm() {
         <div>{formik.errors.postcode}</div>
       ) : null}
 
-      <button className="btn-primary self-center my-4" type="submit">
-        Submit
+      <button className="btn-primary uppercase self-center my-4" type="submit">
+        Zamawiam i place
       </button>
     </form>
   );
