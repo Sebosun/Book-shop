@@ -1,21 +1,30 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { bookTypes } from "../../components/pages/Main";
 
-export interface cartState {
-  cart: any[];
+interface cartItems extends bookTypes {
+  quantity: number;
 }
 
-const initialState: cartState = {
-  cart: [],
-};
+export interface cartState {
+  cart: cartItems[];
+}
+
+const initialState: cartState = { cart: [] };
 
 const cartSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
     addToCart(state, action: PayloadAction<bookTypes>) {
-      const newArr = [...state.cart, action.payload];
-      state.cart = newArr;
+      const find = state.cart.some((el) => el.id === action.payload.id);
+      if (find) {
+        const index = state.cart.findIndex((el) => el.id === action.payload.id);
+        state.cart[index].quantity++;
+      } else {
+        const newItem = { ...action.payload, quantity: 1 };
+        const newCart = [...state.cart, newItem];
+        state.cart = newCart;
+      }
     },
   },
 });
