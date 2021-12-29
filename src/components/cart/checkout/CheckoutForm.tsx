@@ -1,3 +1,4 @@
+import { error } from "console";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { customerData } from "./Checkout";
@@ -5,6 +6,8 @@ import { customerData } from "./Checkout";
 interface checkoutFormTypes {
   handleOrderConfirm: (data: customerData) => void;
 }
+
+const errorStyles = `text-red-600 leading-7`;
 
 export default function CheckoutForm({
   handleOrderConfirm,
@@ -18,20 +21,21 @@ export default function CheckoutForm({
     },
     validationSchema: Yup.object({
       first_name: Yup.string()
-        .min(4, "Imie musi byc dluzsze niz 4 litery")
+        .min(4, "Imie musi miec przynajmniej 4 znaki")
         .max(15, "Imie nie moze byc dluzsze niz 15 znakow")
         .required("Wymagane"),
       last_name: Yup.string()
-        .min(5, "nazwisko musi miec przynajmniej 5 znakow")
+        .min(5, "Nazwisko musi miec przynajmniej 5 znakow")
         .max(25, "Nazwisko nie moze byc dluzsze niz 25 znakow")
         .required("Wymagane"),
       city: Yup.string()
         .required("Wymagane")
-        .min(3, "Nazwa miejscowosci musi miec przynajmniej 3 litery"),
+        .min(3, "Nazwa miejscowosci musi posiadac przynajmniej 3 znaki"),
       zip_code: Yup.string()
-        .matches(/^\d{2}-\d{3}$|^\d{5}$/, "Invalid post code")
-        .min(5, "Must be at least 5 digits")
-        .max(6, "Must be at most 6 digits"),
+        .matches(/^\d{2}-\d{3}$|^\d{5}$/, "Nieprawidlowy kod pocztowy")
+        .min(5, "Nieprawidlowy kod pocztowy")
+        .max(6, "Nieprawidlowy kod pocztowy")
+        .required("Wymagane"),
     }),
     onSubmit: (values) => {
       if (values.zip_code.length === 5) {
@@ -62,7 +66,7 @@ export default function CheckoutForm({
         value={formik.values.first_name}
       />
       {formik.touched.first_name && formik.errors.first_name ? (
-        <div>{formik.errors.first_name}</div>
+        <div className={errorStyles}>{formik.errors.first_name}</div>
       ) : null}
 
       <label htmlFor="last_name">Nazwisko</label>
@@ -75,7 +79,7 @@ export default function CheckoutForm({
         value={formik.values.last_name}
       />
       {formik.touched.last_name && formik.errors.last_name ? (
-        <div>{formik.errors.last_name}</div>
+        <div className={errorStyles}>{formik.errors.last_name}</div>
       ) : null}
 
       <label htmlFor="city">Miasto</label>
@@ -88,7 +92,7 @@ export default function CheckoutForm({
         value={formik.values.city}
       />
       {formik.touched.city && formik.errors.city ? (
-        <div>{formik.errors.city}</div>
+        <div className={errorStyles}>{formik.errors.city}</div>
       ) : null}
 
       <label htmlFor="zip_code">Kod pocztowy</label>
@@ -101,11 +105,14 @@ export default function CheckoutForm({
         value={formik.values.zip_code}
       />
       {formik.touched.zip_code && formik.errors.zip_code ? (
-        <div>{formik.errors.zip_code}</div>
+        <div className={errorStyles}>{formik.errors.zip_code}</div>
       ) : null}
 
       <button
-        className="btn-primary w-full md:w-auto mt-20 uppercase self-center my-4"
+        className={`${
+          formik.isValid ? "btn-primary" : "btn-disabled"
+        } w-full md:w-auto mt-20 uppercase self-center my-4`}
+        disabled={!formik.isValid}
         type="submit"
       >
         ZAMAWIAM I PŁACĘ
