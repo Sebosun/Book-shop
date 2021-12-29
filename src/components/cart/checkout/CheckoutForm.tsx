@@ -49,7 +49,7 @@ export default function CheckoutForm({
 
   return (
     <form
-      className="flex flex-col p-6 border-2 border-solid shadow-md rounded-md text-lg md:text-xl text-left gap-2 border-gray-300"
+      className="flex grow-0 flex-col p-6 border-2 border-solid shadow-md rounded-md text-lg md:text-xl text-left gap-2 border-gray-300"
       onSubmit={formik.handleSubmit}
     >
       <label htmlFor="first_name">Imie</label>
