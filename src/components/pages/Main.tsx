@@ -1,6 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import Bookshelf from "../bookshelf/Bookshelf";
 
+//TODO: export types to separate compoents ?
 export interface bookTypes {
   id: number;
   title: string;
@@ -13,15 +14,19 @@ export interface bookTypes {
 
 export default function Main(): ReactElement | null {
   const [books, setBooks] = useState<bookTypes[]>([]);
+
   const fetchBooks = async () => {
-    // TODO error handling
     const request = await fetch("http://localhost:3001/api/book");
-    const reader = request.body?.getReader();
-    let readReader = await reader?.read();
-    setBooks(JSON.parse(new TextDecoder().decode(readReader?.value)).data);
+    if (request.body) {
+      const reader = request.body.getReader();
+      let readReader = await reader.read();
+      setBooks(JSON.parse(new TextDecoder().decode(readReader.value)).data);
+    } else {
+      console.error("Something went wrong");
+    }
   };
 
-  // run fetchBooks at the app launch
+  // run fetchBooks when the component loads
   useEffect(() => {
     fetchBooks();
   }, []);
