@@ -32,7 +32,7 @@ export default function Checkout(): ReactElement | null {
   };
   return (
     <div className="flex justify-center gap-12 my-20 flex-wrap">
-      <div>
+      <div className="w-96">
         <CheckoutForm handleOrderConfirm={handleOrderConfirm} />
         <div></div>
       </div>
