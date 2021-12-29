@@ -34,7 +34,16 @@ export default function CheckoutForm({
         .max(6, "Must be at most 6 digits"),
     }),
     onSubmit: (values) => {
-      handleOrderConfirm(values);
+      if (values.zip_code.length === 5) {
+        const copy = { ...values };
+        let transformZipCode = copy["zip_code"].split("");
+
+        // can't join these functions once after another, since splice doesnt actually return the array
+        transformZipCode.splice(2, 0, "-");
+        handleOrderConfirm({ ...values, zip_code: transformZipCode.join("") });
+      } else {
+        handleOrderConfirm(values);
+      }
     },
   });
 
@@ -92,10 +101,9 @@ export default function CheckoutForm({
         <div>{formik.errors.zip_code}</div>
       ) : null}
 
-      <button
-        className="btn-primary uppercase self-center my-4"
-        type="submit"
-      ></button>
+      <button className="btn-primary uppercase self-center my-4" type="submit">
+        ZAMAWIAM I PŁACĘ
+      </button>
     </form>
   );
 }
