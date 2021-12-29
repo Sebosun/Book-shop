@@ -31,9 +31,9 @@ export default function Checkout(): ReactElement | null {
     }
   };
   return (
-    <div className="flex flex-col-reverse md:grid gap-4 p-2 md:grid-cols-2 max-w-2xl xl:max-w-6xl m-4 my-24 mx-auto">
+    <div className="flex flex-col-reverse md:grid gap-4 p-4 md:grid-cols-2 max-w-xl sm:max-w-4xl xl:max-w-6xl m-4 md:my-24 mx-auto">
       <CheckoutForm handleOrderConfirm={handleOrderConfirm} />
-      <div className="grid grid-rows-2">
+      <div className="grid md:grid-rows-2">
         <CartPreview />
       </div>
     </div>
