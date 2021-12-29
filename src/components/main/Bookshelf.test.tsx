@@ -1,7 +1,7 @@
-import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import Bookshelf from "./Bookshelf";
 import { createStore } from "../../store/app/store";
+import { render, screen } from "@testing-library/react";
 
 test("if props is being rendered", () => {
   render(
@@ -30,7 +30,7 @@ test("if props is being rendered", () => {
   expect(screen.getByText(/Dodaj do koszyka/i)).toBeInTheDocument();
 });
 
-test("if probs is being rendered 2", () => {
+test("if props is being rendered 2", () => {
   render(
     <Provider store={createStore()}>
       <Bookshelf

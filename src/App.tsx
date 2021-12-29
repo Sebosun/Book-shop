@@ -3,7 +3,7 @@ import "./App.css";
 import Cart from "./components/cart/Cart";
 import Checkout from "./components/cart/checkout/Checkout";
 import Header from "./components/header/Header";
-import Main from "./components/pages/Main";
+import Main from "./components/main/Main";
 import { useAppSelector } from "./store/app/hooks";
 
 function App() {

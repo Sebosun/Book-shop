@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useAppDispatch } from "../../store/app/hooks";
 import { addToCart } from "../../store/slices/cart";
-import { bookTypes } from "../pages/Main";
+import { bookTypes } from "../main/Main";
 
 export default function Bookshelf({
   book,
