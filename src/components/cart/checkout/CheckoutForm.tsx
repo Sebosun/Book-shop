@@ -48,7 +48,10 @@ export default function CheckoutForm({
   });
 
   return (
-    <form className="flex flex-col" onSubmit={formik.handleSubmit}>
+    <form
+      className="flex flex-col p-6 border-2 border-solid shadow-md rounded-md text-lg md:text-xl text-left gap-2 border-gray-300"
+      onSubmit={formik.handleSubmit}
+    >
       <label htmlFor="first_name">Imie</label>
       <input
         id="first_name"
@@ -101,7 +104,10 @@ export default function CheckoutForm({
         <div>{formik.errors.zip_code}</div>
       ) : null}
 
-      <button className="btn-primary uppercase self-center my-4" type="submit">
+      <button
+        className="btn-primary w-full md:w-auto mt-20 uppercase self-center my-4"
+        type="submit"
+      >
         ZAMAWIAM I PŁACĘ
       </button>
     </form>
