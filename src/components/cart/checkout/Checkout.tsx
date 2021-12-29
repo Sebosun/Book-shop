@@ -1,5 +1,7 @@
 import type { ReactElement } from "react";
 import { useAppSelector } from "../../../store/app/hooks";
+import { cartItems } from "../../../store/slices/cart";
+import CartPreview from "./CartPreview";
 import CheckoutForm from "./CheckoutForm";
 
 export interface customerData {
@@ -11,11 +13,9 @@ export interface customerData {
 
 export default function Checkout(): ReactElement | null {
   const { cart } = useAppSelector((state) => state.cart);
-  const handleOrderConfirm = async (data: customerData) => {
-    const purchaseData = cart.map((val) => {
-      return { id: val.id, quantity: val.quantity };
-    });
 
+  const handleOrderConfirm = async (data: customerData) => {
+    const purchaseData = filterIdQuantity(cart);
     try {
       const post = await fetch("http://localhost:3001/api/order", {
         method: "POST",
@@ -31,11 +31,17 @@ export default function Checkout(): ReactElement | null {
     }
   };
   return (
-    <>
-      <div className="max-w-xl mx-auto">
-        <CheckoutForm handleOrderConfirm={handleOrderConfirm} />
-        <div></div>
+    <div className="flex flex-col-reverse md:grid gap-4 p-2 md:grid-cols-2 max-w-2xl xl:max-w-6xl m-4 my-24 mx-auto">
+      <CheckoutForm handleOrderConfirm={handleOrderConfirm} />
+      <div className="grid grid-rows-2">
+        <CartPreview />
       </div>
-    </>
+    </div>
   );
 }
+
+const filterIdQuantity = (cart: cartItems[]) => {
+  return cart.map((val) => {
+    return { id: val.id, quantity: val.quantity };
+  });
+};
