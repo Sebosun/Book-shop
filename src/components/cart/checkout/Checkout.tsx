@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { useAppSelector } from "../../store/app/hooks";
+import { useAppSelector } from "../../../store/app/hooks";
 import CheckoutForm from "./CheckoutForm";
 
 export interface customerData {
@@ -32,8 +32,9 @@ export default function Checkout(): ReactElement | null {
   };
   return (
     <>
-      <div className="max-w-md mx-auto">
+      <div className="max-w-xl mx-auto">
         <CheckoutForm handleOrderConfirm={handleOrderConfirm} />
+        <div></div>
       </div>
     </>
   );

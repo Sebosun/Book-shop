@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Cart from "./components/cart/Cart";
-import Checkout from "./components/cart/Checkout";
+import Checkout from "./components/cart/checkout/Checkout";
 import Header from "./components/header/Header";
 import Main from "./components/pages/Main";
 import { useAppSelector } from "./store/app/hooks";

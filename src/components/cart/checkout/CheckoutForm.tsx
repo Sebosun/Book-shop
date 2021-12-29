@@ -92,9 +92,10 @@ export default function CheckoutForm({
         <div>{formik.errors.zip_code}</div>
       ) : null}
 
-      <button className="btn-primary uppercase self-center my-4" type="submit">
-        Zamawiam i place
-      </button>
+      <button
+        className="btn-primary uppercase self-center my-4"
+        type="submit"
+      ></button>
     </form>
   );
 }
