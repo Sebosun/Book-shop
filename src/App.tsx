@@ -3,7 +3,7 @@ import { Router } from "./components/Router";
 
 function App() {
   return (
-    <div className="App">
+    <div className="text-center">
       <Router />
     </div>
   );
