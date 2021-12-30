@@ -25,7 +25,8 @@ test("renders after succesful api call", async () => {
   const combinedData = { data: books, metadata };
 
   window.fetch = jest.fn();
-  window.fetch.mockResolvedValueOnce({
+  // this function exists there and i couldnt get it to work otherwise
+  (window.fetch as any).mockResolvedValueOnce({
     json: async () => combinedData,
   });
 
