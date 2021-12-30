@@ -29,7 +29,7 @@ export default function Checkout(): ReactElement | null {
     }
   };
   return (
-    <div className="flex flex-row-reverse flex-wrap  justify-center gap-2 my-4 md:my-20 ">
+    <div className="flex flex-row-reverse flex-wrap gap-2 justify-center my-4 md:my-20">
       <CartPreview />
       <div className="w-96">
         <CheckoutForm handleOrderConfirm={handleOrderConfirm} />

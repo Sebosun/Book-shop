@@ -12,12 +12,12 @@ export default function CartPreview(): ReactElement | null {
 
   return (
     <div className="p-4">
-      <div className="max-h-96 p-2 overflow-y-auto">
+      <div className="overflow-y-auto p-2 max-h-96">
         {cart.map((item) => {
           return (
-            <div className="text-justify p-2 shadow-md border-b-2 border-solid border-gray-300 gap-2 flex">
+            <div className="flex gap-2 p-2 text-justify border-b-2 border-gray-300 border-solid shadow-md">
               <img
-                className="max-h-20 object-contain"
+                className="object-contain max-h-20"
                 src={item.cover_url}
                 alt="book cover"
               />
@@ -27,7 +27,7 @@ export default function CartPreview(): ReactElement | null {
         })}
       </div>
 
-      <div className="flex p-2 justify-center md:justify-start text-2xl gap-4 my-6 leading-8">
+      <div className="flex gap-4 justify-center p-2 my-6 text-2xl leading-8 md:justify-start">
         <p>Razem:</p>
         <h1 className="text-sky-600"> {total} zl</h1>
       </div>

@@ -15,7 +15,7 @@ export default function Bookshelf({
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 p-2 md:p-4 rounded-lg border-2 border-solid shadow-xl max-w-ms">
+    <div className="grid grid-cols-2 gap-4 p-2 rounded-lg border-2 border-solid shadow-xl md:p-4 max-w-ms">
       <img
         className="object-contain h-96"
         src={book.cover_url}
