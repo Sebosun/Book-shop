@@ -31,7 +31,7 @@ export default function Bookshelf({
           <div className="text-gray-900">{book.author}</div>
         </div>
         <div className="text-gray-900">{book.pages} stron</div>
-        <button onClick={handleAddToCart} className="btn-primary">
+        <button onClick={handleAddToCart} className="btn-primary w-lg">
           Dodaj do koszyka
         </button>
       </div>
