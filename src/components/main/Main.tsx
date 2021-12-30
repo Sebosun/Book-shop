@@ -1,16 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
+import { bookTypes } from "../../models/bookTypes";
 import Bookshelf from "./Bookshelf";
-
-//TODO: export types to separate compoents ?
-export interface bookTypes {
-  id: number;
-  title: string;
-  author: string;
-  cover_url: string;
-  pages: number;
-  price: number;
-  currency: string;
-}
 
 interface fetchData {
   data: bookTypes[];

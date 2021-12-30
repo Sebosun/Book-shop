@@ -1,4 +1,4 @@
-import { cartState } from "../store/slices/cart";
+import { cartState } from "../models/cartState";
 import { calcCartLenght } from "./calcCartLenght";
 
 test("returns correct value", () => {

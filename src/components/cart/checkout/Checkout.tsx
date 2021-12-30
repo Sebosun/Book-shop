@@ -1,16 +1,11 @@
 import type { ReactElement } from "react";
-import { useAppSelector } from "../../../store/app/hooks";
-import { cartItems } from "../../../store/slices/cart";
-import { useNavigate } from "react-router-dom";
 import CartPreview from "./CartPreview";
 import CheckoutForm from "./CheckoutForm";
+import { customerData } from "../../../models/customerData";
 
-export interface customerData {
-  first_name: string;
-  last_name: string;
-  city: string;
-  zip_code: string;
-}
+import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../../store/app/hooks";
+import { cartItems } from "../../../models/cartState";
 
 export default function Checkout(): ReactElement | null {
   const { cart } = useAppSelector((state) => state.cart);

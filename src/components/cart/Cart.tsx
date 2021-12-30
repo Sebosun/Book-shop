@@ -1,23 +1,17 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { calculateTotalCartValue } from "../../helpers/calcTotalCartValue";
 import { useAppSelector } from "../../store/app/hooks";
-import { cartItems } from "../../store/slices/cart";
 import CartItem from "./CartItem";
 
 // calculates carts total value
-export const calculateTotalCart = (cart: cartItems[]) => {
-  return cart.reduce((prev, item) => {
-    return item.quantity * item.price + prev;
-  }, 0);
-};
-
 export default function Cart(): ReactElement {
   const [total, setTotal] = useState(0);
   const { cart } = useAppSelector((state) => state.cart);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTotal(calculateTotalCart(cart));
+    setTotal(calculateTotalCartValue(cart));
   }, [cart]);
 
   const handleCheckout = () => {

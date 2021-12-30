@@ -1,7 +1,7 @@
 import { error } from "console";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { customerData } from "./Checkout";
+import { customerData } from "../../../models/customerData";
 
 interface checkoutFormTypes {
   handleOrderConfirm: (data: customerData) => void;

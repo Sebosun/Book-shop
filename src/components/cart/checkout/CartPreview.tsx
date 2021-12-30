@@ -1,13 +1,13 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useAppSelector } from "../../../store/app/hooks";
-import { calculateTotalCart } from "../Cart";
+import { calculateTotalCartValue } from "../../../helpers/calcTotalCartValue";
 
 export default function CartPreview(): ReactElement | null {
   const { cart } = useAppSelector((state) => state.cart);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    setTotal(calculateTotalCart(cart) / 100);
+    setTotal(calculateTotalCartValue(cart) / 100);
   }, [cart]);
 
   return (
