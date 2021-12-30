@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
 import { useAppSelector } from "../../../store/app/hooks";
 import { cartItems } from "../../../store/slices/cart";
+import { useNavigate } from "react-router-dom";
 import CartPreview from "./CartPreview";
 import CheckoutForm from "./CheckoutForm";
 
@@ -13,11 +14,12 @@ export interface customerData {
 
 export default function Checkout(): ReactElement | null {
   const { cart } = useAppSelector((state) => state.cart);
+  const navigate = useNavigate();
 
   const handleOrderConfirm = async (data: customerData) => {
     const purchaseData = filterIdQuantity(cart);
     try {
-      const post = await fetch("http://localhost:3001/api/order", {
+      await fetch("http://localhost:3001/api/order", {
         method: "POST",
         mode: "cors",
         headers: {
@@ -25,7 +27,8 @@ export default function Checkout(): ReactElement | null {
         },
         body: JSON.stringify({ order: purchaseData, ...data }),
       });
-      console.log(post);
+
+      navigate("/order-completed");
     } catch (error) {
       console.log(error);
     }
