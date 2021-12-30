@@ -22,12 +22,11 @@ test("renders after succesful api call", async () => {
     total_records: 1,
   };
 
-  const dataTogether = { data: books, metadata };
+  const combinedData = { data: books, metadata };
 
   window.fetch = jest.fn();
-
   window.fetch.mockResolvedValueOnce({
-    json: async () => dataTogether,
+    json: async () => combinedData,
   });
 
   render(
