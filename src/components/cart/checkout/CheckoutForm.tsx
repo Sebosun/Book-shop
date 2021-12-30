@@ -8,6 +8,7 @@ interface checkoutFormTypes {
 }
 
 const errorStyles = `text-red-600 leading-7`;
+const inputStyles = `rounded-md`;
 
 export default function CheckoutForm({
   handleOrderConfirm,
@@ -58,6 +59,7 @@ export default function CheckoutForm({
     >
       <label htmlFor="first_name">Imie</label>
       <input
+        className={inputStyles}
         id="first_name"
         name="first_name"
         type="text"
@@ -71,6 +73,7 @@ export default function CheckoutForm({
 
       <label htmlFor="last_name">Nazwisko</label>
       <input
+        className={inputStyles}
         id="last_name"
         name="last_name"
         type="text"
@@ -84,6 +87,7 @@ export default function CheckoutForm({
 
       <label htmlFor="city">Miasto</label>
       <input
+        className={inputStyles}
         id="city"
         name="city"
         type="text"
@@ -97,6 +101,7 @@ export default function CheckoutForm({
 
       <label htmlFor="zip_code">Kod pocztowy</label>
       <input
+        className={inputStyles}
         id="zip_code"
         name="zip_code"
         type="text"

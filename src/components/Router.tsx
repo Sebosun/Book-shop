@@ -1,11 +1,12 @@
 import type { ReactElement } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useAppSelector } from "../store/app/hooks";
+
 import Cart from "./cart/Cart";
 import Checkout from "./cart/checkout/Checkout";
 import OrderComplete from "./cart/checkout/OrderComplete";
 import Header from "./header/Header";
 import Main from "./main/Main";
-import { useAppSelector } from "../store/app/hooks";
 
 export function Router(): ReactElement | null {
   const { cart } = useAppSelector((state) => state.cart);

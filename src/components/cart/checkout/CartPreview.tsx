@@ -12,7 +12,7 @@ export default function CartPreview(): ReactElement | null {
 
   return (
     <div className="p-4">
-      <div className="max-h-96 p-2 overflow-y-scroll">
+      <div className="max-h-96 p-2 overflow-y-auto">
         {cart.map((item) => {
           return (
             <div className="text-justify p-2 shadow-md border-b-2 border-solid border-gray-300 gap-2 flex">

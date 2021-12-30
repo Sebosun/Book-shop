@@ -8,6 +8,8 @@ const cartSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
+    // checks if item is already in our state
+    // if it is adds 1 quantity otherwise adds new item to the cart
     addToCart(state, action: PayloadAction<bookTypes>) {
       const find = state.cart.some((el) => el.id === action.payload.id);
       if (find) {
