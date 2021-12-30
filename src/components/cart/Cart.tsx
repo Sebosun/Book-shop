@@ -59,9 +59,9 @@ export default function Cart(): ReactElement {
     );
   } else {
     return (
-      <>
-        <h1>Hehe</h1>
-      </>
+      <div>
+        <h1> Twoj koszyk jest pusty </h1>
+      </div>
     );
   }
 }

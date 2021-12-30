@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useAppDispatch } from "../../store/app/hooks";
 import { addToCart } from "../../store/slices/cart";
-import { bookTypes } from "../pages/Main";
+import { bookTypes } from "../main/Main";
 
 export default function Bookshelf({
   book,
@@ -22,15 +22,15 @@ export default function Bookshelf({
         alt="book cover"
       />
       <div className="flex flex-col justify-evenly text-left">
-        <div className="text-gray-500">
-          Tytul: <span className="text-gray-900">{book.title}</span>
+        <div>
+          <div className="text-gray-500">Tytul:</div>
+          <div className="text-gray-900">{book.title}</div>
         </div>
-        <div className="text-gray-600">
-          Autor: <span className="text-gray-900">{book.author}</span>
+        <div>
+          <div className="text-gray-600">Autor:</div>
+          <div className="text-gray-900">{book.author}</div>
         </div>
-        <div className="text-gray-600">
-          <span className="text-gray-900">{book.pages}</span> stron
-        </div>
+        <div className="text-gray-900">{book.pages} stron</div>
         <button onClick={handleAddToCart} className="btn-primary">
           Dodaj do koszyka
         </button>
