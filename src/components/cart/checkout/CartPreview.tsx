@@ -11,8 +11,8 @@ export default function CartPreview(): ReactElement | null {
   }, [cart]);
 
   return (
-    <div>
-      <div className="max-h-96 overflow-y-scroll">
+    <div className="p-4">
+      <div className="max-h-96 p-2 overflow-y-scroll">
         {cart.map((item) => {
           return (
             <div className="text-justify p-2 shadow-md border-b-2 border-solid border-gray-300 gap-2 flex">
@@ -27,7 +27,7 @@ export default function CartPreview(): ReactElement | null {
         })}
       </div>
 
-      <div className="flex text-2xl gap-4 my-6 leading-8">
+      <div className="flex p-2 justify-center md:justify-start text-2xl gap-4 my-6 leading-8">
         <p>Razem:</p>
         <h1 className="text-sky-600"> {total} zl</h1>
       </div>

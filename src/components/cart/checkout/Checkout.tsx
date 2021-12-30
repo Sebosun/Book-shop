@@ -34,12 +34,12 @@ export default function Checkout(): ReactElement | null {
     }
   };
   return (
-    <div className="flex justify-center gap-12 my-20 flex-wrap">
+    <div className="flex flex-row-reverse flex-wrap  justify-center gap-2 my-4 md:my-20 ">
+      <CartPreview />
       <div className="w-96">
         <CheckoutForm handleOrderConfirm={handleOrderConfirm} />
         <div></div>
       </div>
-      <CartPreview />
     </div>
   );
 }
