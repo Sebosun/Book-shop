@@ -28,8 +28,8 @@ export default function Cart(): ReactElement {
   if (cart.length > 0) {
     return (
       <div className="p-2 text-md">
-        <div className="flex shadow-md flex-col gap-2 max-w-4xl p-4 m-2 border-2 border-solid border-gray-300 rounded-md mx-auto">
-          <div className="grid grid-cols-9 text-xs justify-evenly md:text-xl border-b-2 pb-2 md:grid grid-cols-9 text-left gap-4">
+        <div className="flex flex-col gap-2 p-4 m-2 mx-auto max-w-4xl rounded-md border-2 border-gray-300 border-solid shadow-md">
+          <div className="grid grid-cols-9 gap-4 justify-evenly pb-2 text-xs text-left border-b-2 md:text-xl md:grid">
             <div></div>
             <p className="col-span-6">Tytul</p>
             <p className="justify-self-end">Sztuki</p>
@@ -47,11 +47,11 @@ export default function Cart(): ReactElement {
               />
             );
           })}
-          <h1 className="text-sky-600 text-2xl text-right">{total / 100} zl</h1>
+          <h1 className="text-2xl text-right text-sky-600">{total / 100} zl</h1>
         </div>
         <button
           onClick={handleCheckout}
-          className="mx-auto min-w-full md:min-w-0 my-4 md:w-44 uppercase btn-primary"
+          className="mx-auto my-4 min-w-full uppercase md:min-w-0 md:w-44 btn-primary"
         >
           Dalej
         </button>
@@ -59,8 +59,8 @@ export default function Cart(): ReactElement {
     );
   } else {
     return (
-      <div>
-        <h1> Twoj koszyk jest pusty </h1>
+      <div className="my-20">
+        <h1 className="text-4xl text-gray-700">Twoj koszyk jest pusty.</h1>
       </div>
     );
   }
